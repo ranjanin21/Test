@@ -1,33 +1,116 @@
-<h1>Listing users</h1>
+<br><br>
+  <div class="container">
+  <div class="well col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2
+    col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User level</th>
-      <th>Registered since</th>
-      <th>Topic</th>
-      <th>Warnings</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @users.each do |user| %>
-      <tr>
-       <%= link_to image_tag("/Chrysanthemum.jpg") %> <td><%= user.name %></td>
-        <td><%= user.user_level %></td>
-        <td><%= user.registered_since %></td>
-        <td><%= user.topic %></td>
-        <td><%= user.warnings %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <div class="row user-row">
+          <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+              <%= image_tag("photo_small.png", class: "image-circle", alt: 'User Pic') %>
+            </div>
 
-<br>
+          <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+              <strong> <%=  user.name %> </strong><br>
+              <span class="text-muted">User level: <%= user.user_level %> </span>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 dropdown-user" data-for=".cyruxx">
+                <i class="glyphicon glyphicon-chevron-down text-muted"></i>
+            </div>
+        </div>
 
-<%= link_to 'New User', new_user_path %>
+        <div class="row user-infos cyruxx">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">User information</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                               <%= image_tag("photo_small.png", class: "image-circle", alt: 'User Pic') %>
+                            </div>
+                            <div class="col-xs-2 col-sm-2 hidden-md hidden-lg">
+                                <%= image_tag("photo_small.png", class: "image-circle", alt: 'User Pic') %>
+                            </div>
+                            <div class="col-xs-10 col-sm-10 hidden-md hidden-lg">
+                                <strong><%= user.name %> </strong><br>
+                                <dl>
+                                    <dt>User level:</dt>
+                                    <dd><%= user.user_level %> </dd>
+                                    <dt>Registered since:</dt>
+                                    <dd><%= user.registered_since %> </dd>
+                                    <dt>Topics</dt>
+                                    <dd> <%= user.topic %> </dd>
+                                    <dt>Warnings</dt>
+                                    <dd> <%= user.warnings %> </dd>
+                                </dl>
+                            </div>
+                            <div class=" col-md-9 col-lg-9 hidden-xs hidden-sm">
+                                <strong><%= user.name %> </strong><br>
+                                <table class="table table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td>User level:</td>
+                                        <td><%= user.user_level %> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registered since:</td>
+                                        <td> <%= user.registered_since %> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Topics</td>
+                                        <td><%= user.topic %> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Warnings</td>
+                                        <td><%= user.warnings %> </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <button class="btn btn-sm btn-primary" type="button"
+                                data-toggle="tooltip"
+                                data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
+                        <span class="pull-right">
+                            <button class="btn btn-sm btn-warning" type="button"
+                                    data-toggle="tooltip"
+                                    data-original-title="Edit this user"><i class="glyphicon glyphicon-edit"></i></button>
+                            <button class="btn btn-sm btn-danger" type="button"
+                                    data-toggle="tooltip"
+                                    data-original-title="Remove this user"><i class="glyphicon glyphicon-remove"></i></button>
+                        </span>
+                    </div>
+                    <%#= render 'footer' %>
+
+                </div>
+            </div>
+        </div>
+
+  <% end %>
+
+                    <div class="panel-footer">
+                        <button class="btn btn-sm btn-primary" type="button"
+                                data-toggle="tooltip"
+                                data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
+                        <span class="pull-right">
+                            <button class="btn btn-sm btn-warning" type="button"
+                                    data-toggle="tooltip"
+                                    data-original-title="Edit this user"><i class="glyphicon glyphicon-edit"></i></button>
+                            <button class="btn btn-sm btn-danger" type="button"
+                                    data-toggle="tooltip"
+                                    data-original-title="Remove this user"><i class="glyphicon glyphicon-remove"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
